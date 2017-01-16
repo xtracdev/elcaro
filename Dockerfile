@@ -1,14 +1,25 @@
-FROM nodesource/wheezy:6.2.0
+FROM debian:wheezy
 
 COPY apt.conf /etc/apt/apt.conf
 
 RUN apt-get update \
-  && apt-get install -y libaio1 \
-  && apt-get install -y build-essential \
-  && apt-get install -y unzip \
-  && apt-get install -y curl \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ && apt-get install -y --force-yes --no-install-recommends \
+      apt-transport-https \
+      ssh-client \
+      build-essential \
+      curl \
+      ca-certificates \
+      git \
+      libicu-dev \
+      'libicu[0-9][0-9].*' \
+      lsb-release \
+      python-all \
+      rlwrap \
+      libaio1 \
+      unzip \
+ && rm -rf /var/lib/apt/lists/* \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;
 
 RUN mkdir -p opt/oracle
 ADD ./oracle/linux/ .
