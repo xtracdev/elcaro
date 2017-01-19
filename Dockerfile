@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM debian:jessie-slim
 
 COPY apt.conf /etc/apt/apt.conf
 
@@ -6,15 +6,8 @@ RUN apt-get update \
  && apt-get install -y --force-yes --no-install-recommends \
       apt-transport-https \
       ssh-client \
-      build-essential \
       curl \
       ca-certificates \
-      git \
-      libicu-dev \
-      'libicu[0-9][0-9].*' \
-      lsb-release \
-      python-all \
-      rlwrap \
       libaio1 \
       unzip \
  && rm -rf /var/lib/apt/lists/* \

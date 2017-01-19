@@ -23,6 +23,8 @@ the Oracle instant client software.
 
 This creates a base image named elcaro.
 
+To build: `docker build -t elcaro .`
+
 ### Contributing
 
 To contribute, you must certify you agree with the [Developer Certificate of Origin](http://developercertificate.org/)
